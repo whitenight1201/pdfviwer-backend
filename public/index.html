@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Example of PDF download</title>
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="jquery.binarytransport.js"></script>
+
+        <script>
+            
+            console.log("Requesting PDF file from the server...");
+
+            $.ajax({
+                    method: "POST",
+                    url: "/someroute",
+                    // Or you might want to try the non-streaming versions (it will be faster with small PDF files).
+                    //url: "/someroute-non-streaming-example",
+                    dataType: 'binary'
+                })
+                .then(function (data) {
+                    console.log("Got the PDF file!");
+
+                    // Do with the PDF data as you please.
+
+                    var downloadLink = document.createElement('a')
+                    downloadLink.target = '_blank'
+                    downloadLink.download = 'new_pdf_haha.pdf'
+                    var blob = new Blob([data], { type: 'application/pdf' })
+                    var URL = window.URL || window.webkitURL
+                    var downloadUrl = URL.createObjectURL(blob)
+                    downloadLink.href = downloadUrl
+                    document.body.append(downloadLink) // THIS ISN'T NECESSARY
+                    downloadLink.click()
+                    document.body.removeChild(downloadLink);  // THIS ISN'T NECESSARY
+                    URL.revokeObjectURL(downloadUrl);
+                })
+                .catch(function (err) {
+                    console.error("An error occurred.");
+                    console.error(err);
+                });
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

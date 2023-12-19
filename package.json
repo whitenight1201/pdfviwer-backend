@@ -1,0 +1,29 @@
+{
+  "name": "pdf-server-example",
+  "version": "1.0.0",
+  "description": "Example Node.js server that downloads a PDF file to a web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashleydavis/pdf-server-example.git"
+  },
+  "keywords": [
+    "Node.js",
+    "PDF",
+    "download"
+  ],
+  "author": "ashley@codecapers.com.au",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashleydavis/pdf-server-example/issues"
+  },
+  "homepage": "https://github.com/ashleydavis/pdf-server-example#readme",
+  "dependencies": {
+    "bower": "^1.8.14",
+    "cors": "^2.8.5",
+    "express": "4.16.2"
+  }
+}
